@@ -19,7 +19,13 @@ from django.conf.urls import include
 
 urlpatterns = [
 
-	url(r'', include('algolove.urls')),
+	url(r'', include('algolove.urls.home')),
+
+    url(r'^algo_snippets/', include('algolove.urls.algo_snippets')),
+
+    url(r'^coding_snippets/', include('algolove.urls.coding_snippets')),
 	
     url(r'^admin/', admin.site.urls),
+
+    url(r'^languages/', include('algolove.urls.languages'))
 ]

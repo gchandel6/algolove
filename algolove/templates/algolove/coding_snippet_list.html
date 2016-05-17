@@ -1,0 +1,71 @@
+{%   load staticfiles   %}
+
+<html>
+
+	<head>
+	
+		<title>	Competitive Coding	</title>
+		<link rel="stylesheet" type="text/css" href="{%  static  'css/c2.css'  %}">
+		<link rel="stylesheet" type="text/css" href="{%  static  'css/w3css.css'  %}">
+		<script src="{%  static  'javascript/jquery.js'  %}">	</script>
+	
+	</head>
+
+	<body>
+
+		<div id="m1">
+			
+			<a href="{% url 'home_page' %}">
+			<p id="p1">  algo	</p>
+			<p id="p2">	 love	</p>
+			</a>
+			
+			<a	href="">
+			<div id="mm1">
+				<p id="p3">LOGIN</p>	
+			</div>
+			</a>
+			
+			<a	href="">
+			<div id="mm2">	
+				<p id="p4">SIGNUP</p>
+			</div>
+			</a>
+			
+		</div>
+
+		<div id="m2">
+			<h id="hd1">		COMPETITIVE CODING	</h>
+		</div>
+
+
+		{% if object_list %}
+        
+        {% for snippet in object_list %}
+            <a href="{%	 url 'coding_snippet_detail' coding_snippet_id=snippet.id	 %}">
+            	
+            	<div id="s1">
+            		<p id="p5">{{ snippet.prob_name }} : 
+            					{{	snippet.judge_name }}</p>
+            		<p id="p6">By : {{	snippet.author  }}</p>
+            		<p id="p7">	    {{	snippet.pub_date  }}</p>
+            	</div>
+
+            </a>
+        {% endfor %}
+
+  
+    	{% else %}
+        	<p>There are no Snippets to display.</p>
+    	{% endif %}
+
+    	<div id="m3">
+
+    	</div>
+
+
+
+	</body>
+
+
+	</html>	

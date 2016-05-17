@@ -22,14 +22,14 @@ class Language(models.Model):
 		return self.name;
 
 	def get_absolute_url(self):
-		return ('cab_language_detail',(),{ 'self' : self.slug })
+		return ('cab_language_detail',(),{ 'slug' : self.slug })
 
 	def get_lexer(self):
 		return lexers.get_lexer_by_name(self.language_code)
 
 
 
-class Snippet(models.Model):
+class Algo_snippet(models.Model):
 	title=models.CharField(max_length=300)
 	language=models.ForeignKey(Language)
 	author=models.ForeignKey(User)
@@ -47,6 +47,7 @@ class Snippet(models.Model):
 	def __unicode__(self):
 		return self.title
 
+
 	def highlight(self):
 		return highlight(self.code,
 							self.language.get_lexer(),
@@ -58,8 +59,42 @@ class Snippet(models.Model):
 		self.updated_date = datetime.datetime.now()
 		self.description_html = markdown(self.description)
 		self.highlighted_code = self.highlight()
-		super(Snippet, self).save()
+		super(Algo_snippet, self).save()
 
+
+class Coding_snippet(models.Model):
+	prob_name=models.CharField(max_length=30)
+	judge_name=models.CharField(max_length=30)
+	tech=models.CharField(max_length=50)
+	language=models.ForeignKey(Language)
+	author=models.ForeignKey(User)
+	description=models.TextField()
+	description_html=models.TextField(editable=False)
+	code=models.TextField()
+	highlighted_code=models.TextField(editable=False)
+	pub_date=models.DateTimeField(editable=False)
+	updated_date=models.DateTimeField(editable=False)
+#	tags=TagField()
+
+	class Meta:
+		ordering = ['-pub_date']
+
+	def __unicode__(self):
+		return self.title
+
+
+	def highlight(self):
+		return highlight(self.code,
+							self.language.get_lexer(),
+							formatters.HtmlFormatter(linenos=True))
+
+	def save(self):
+		if not self.id:
+			self.pub_date = datetime.datetime.now()
+		self.updated_date = datetime.datetime.now()
+		self.description_html = markdown(self.description)
+		self.highlighted_code = self.highlight()
+		super(Coding_snippet, self).save()
 
 
 
