@@ -12,6 +12,16 @@ urlpatterns = [
 	#   URL for Home Page
 	
 	url(r'^$' , home.home_page , name='home_page') ,
+
+	#	URL for user signup's
+
+	url(r'^users/new/$',home.sign_up,name="sign_up"),
 	
-	
+	#	URL for user Login
+
+	url(r'^accounts/login/$',home.log_in,name="log_in"),
+
+	#	URL for user Logout
+
+	url(r'^logout/$',home.log_out,name="log_out")
 ]

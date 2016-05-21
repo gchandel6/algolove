@@ -15,9 +15,9 @@ urlpatterns = [
 							name="all_lang"
 		),
 
-	url(r'^ (?P<slug>[-\w]+)/ $' ,
+	url(r'^(?P<slug>[-\w]+)/$' ,
 						language_detail,
-						name="lang_detail"
+						name="language_detail"
 		),
 
 	

@@ -22,9 +22,14 @@ urlpatterns = [
 							name="algo_snippet_list"
 			),
 
+	# URL for detailed page of a snippet
+
 	url(r'^(?P<algo_snippet_id>\d+)/$' ,
 			Algo_snippets.algo_snippet_page,
 							name="algo_snippet_detail"
 		),	
 	
+	# URL for adding a new algo_snippet
+
+	url(r'^add/$',Algo_snippets.add_algo_snippet,name="add_algo_snippet")
 ]

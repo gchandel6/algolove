@@ -1,0 +1,96 @@
+{%   load staticfiles   %}
+
+<html>
+
+	<head>
+	
+		<title>	Add New Snippet : AlgoLove	</title>
+		<link rel="stylesheet" type="text/css" href="{%  static  'css/c4.css'  %}">
+		<link rel="stylesheet" type="text/css" href="{%  static  'css/bootstrap1.css'  %}">
+		<link rel="stylesheet" type="text/css" href="{%  static  'css/bootstrap2.css'  %}">
+		<link rel="stylesheet" type="text/css" href="{%  static  'css/pygments.css'  %}">
+		<script src="{%  static  'javascript/jquery.js'  %}">	</script>
+	
+	</head>
+
+	<body>
+
+		<div id="m1" class="row">
+			
+			<div class="col-sm-3">
+				<a href="{% url 'home_page' %}">
+					<p id="p1">  algo	</p>
+					<p id="p2">	 love	</p>
+				</a>
+			</div>
+
+			<div class="col-sm-6" >		
+			</div>
+
+			<div class="col-sm-1">
+				<a	href="{%	if request.user.is_authenticated	%}	
+					  {%	url 'home_page'		%}
+					  {% 	else				%}
+					  {%	url 'log_in'		%}
+					  {%	endif		%}
+					 
+						">
+					<div id="mm1">
+						<p id="p3">
+						{%	if request.user.is_authenticated 	%}
+						{{	user.username 	}}
+						{%	else	%}
+							LOGIN
+						{%	endif	%}
+						</p>	
+					</div>
+				</a>
+			</div>
+			<div class="col-sm-1">
+				<a	href="{%	if request.user.is_authenticated	%}	
+					  {%	url 'log_out'		%}
+					  {% 	else				%}
+					  {%	url 'sign_up'		%}
+					  {%	endif		%}
+					 
+						">
+					<div id="mm2">	
+						<p id="p4">
+							{%	if request.user.is_authenticated 	%}
+								LOGOUT
+							{%	else	%}
+								SIGNUP
+							{%	endif	%}
+						</p>
+					</div>
+				</a>
+			</div>
+
+		</div>
+
+		<div class="alag">
+			<p id="p1">	ADD NEW SNIPPET 	</p>
+		</div>
+		
+
+		<div class="login-page">
+	    	<div class="form">
+    			
+    			<form class="login-form" method="POST" action="{%	url 'add_algo_snippet'	%}">
+
+    				{% csrf_token %}
+      				<p>	{{form.title }}		  </p>
+      				<p>	{{form.description }} </p>
+      				<p>	{{form.code 	 	}}</p>
+      				<p>	{{form.language 	}}</p>
+      				<button type="submit">create</button>
+      				
+    			</form>
+
+
+  			</div>
+		</div> 
+
+	</body>
+
+</html>

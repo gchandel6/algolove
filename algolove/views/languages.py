@@ -1,7 +1,7 @@
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404,render
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from algolove.models import Language
+from algolove.models import Language,Algo_snippet
 
 
 
@@ -9,12 +9,8 @@ from algolove.models import Language
 
 def language_detail(request , slug):
 	
-	lang = get_object_or_404( Language , slug)
-	return DetailView(request,
-						query=language.snippet_set.all,
-						paginate_by=20,
-						template_name='algolove/language_detail.html',
-						extra_context={'language' : language }
-						)
+	language = get_object_or_404( Language , slug=slug)
+	snippets = Algo_snippet.objects.filter(language=language)
+	return render(request,'algolove/language_detail.html',{'codes':snippets })
 
 	

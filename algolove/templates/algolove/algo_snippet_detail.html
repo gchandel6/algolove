@@ -1,0 +1,112 @@
+{%   load staticfiles   %}
+
+<html>
+
+	<head>
+	
+		<title>	{{	snippet.title	}} : AlgoLove	</title>
+		<link rel="stylesheet" type="text/css" href="{%  static  'css/c3.css'  %}">
+		<link rel="stylesheet" type="text/css" href="{%  static  'css/bootstrap1.css'  %}">
+		<link rel="stylesheet" type="text/css" href="{%  static  'css/bootstrap2.css'  %}">
+		<link rel="stylesheet" type="text/css" href="{%  static  'css/w3css.css'  %}">
+		<link rel="stylesheet" type="text/css" href="{%  static  'css/pygments.css'  %}">
+		<script src="{%  static  'javascript/jquery.js'  %}">	</script>
+	
+	</head>
+
+	<body>
+
+		<div id="m1" class="row">
+			
+			<div class="col-sm-3" id="s">
+				<a href="{% url 'home_page' %}">
+					<p id="p1">  algo	</p>
+					<p id="p2">	 love	</p>
+				</a>
+			</div>
+
+			<div class="col-sm-6" >		
+			</div>
+
+			<div class="col-sm-1" id="s">
+				<a	href="">
+					<div id="mm1">
+						<p id="p3">LOGIN</p>	
+					</div>
+				</a>
+			</div>
+			<div class="col-sm-1" id="s">
+				<a	href="">
+					<div id="mm2">	
+						<p id="p4">SIGNUP</p>
+					</div>
+				</a>
+			</div>
+			
+		</div>
+
+		<div class="row" id="m2">
+			<div class="col-sm-2">	</div>
+			<div class="col-sm-8" id="s">
+				<a href="{%	 url 'algo_snippet_detail' algo_snippet_id=snippet.id	%}">
+					<p id="p5">		{{	snippet.title	}}	</p>
+				</a>
+			</div>
+		</div>
+
+		<div class="row" id="n1">
+			<div class="col-sm-1">	</div>
+			<div class="col-sm-2">
+			<p class="np1">	Author:	<a href=""> {{	snippet.author 	}} </a>	</p>
+			</div>
+
+			<div class="col-sm-2">
+			<p class="np1">	Posted:	 {{	snippet.pub_date 	}} 	</p>
+			</div>
+
+			<div class="col-sm-2">
+			<p class="np1">	Language:	
+				<a href="{{ snippet.language.get_absolute_url }}"> {{	snippet.language.name	}} </a>	</p>
+			</div>
+
+			<div class="col-sm-2">
+			<p class="np1">	Score:	5	</p>
+			</div>
+
+			<div class="col-sm-2">
+			<p class="np1">	Tags:	<a href=""> Algorithm </a>	</p>
+			</div>
+		</div>
+
+
+		{% load django_markdown %}
+
+		<div class="row" id="x1">
+			<div class="col-sm-1">		
+			</div>
+
+			<div id="m3" class="col-sm-10">
+				<p>			{{ snippet.description_html|markdown }}	</p>	
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="m51">
+				<p class="p6">CODE</p>
+			</div>
+		</div>
+		
+		<div class="row" id="x1">
+			<div class="col-sm-1">		
+			</div>
+
+			<div id="m3" class="col-sm-10">
+				<p>			{{ snippet.highlighted_code|markdown }}	</p>	
+			</div>
+		</div>
+
+
+	
+	</body>
+
+</html>		

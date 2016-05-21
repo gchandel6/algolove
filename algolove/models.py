@@ -21,8 +21,9 @@ class Language(models.Model):
 	def __unicode__(self):
 		return self.name;
 
+	@models.permalink
 	def get_absolute_url(self):
-		return ('cab_language_detail',(),{ 'slug' : self.slug })
+		return ('language_detail',(),{ 'slug' : self.slug })
 
 	def get_lexer(self):
 		return lexers.get_lexer_by_name(self.language_code)
@@ -60,6 +61,10 @@ class Algo_snippet(models.Model):
 		self.description_html = markdown(self.description)
 		self.highlighted_code = self.highlight()
 		super(Algo_snippet, self).save()
+
+	@models.permalink
+	def get_absolute_url(self):
+		return ('algo_snippet_detail',(),{ 'algo_snippet_id' : self.id })	
 
 
 class Coding_snippet(models.Model):
