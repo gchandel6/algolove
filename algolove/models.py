@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from pygments import lexers, formatters, highlight
 from tagging.fields import TagField
 from markdown import markdown
-import datetime
+from datetime import datetime,date
 
 # Create your models here.
 
@@ -38,8 +38,8 @@ class Algo_snippet(models.Model):
 	description_html=models.TextField(editable=False)
 	code=models.TextField()
 	highlighted_code=models.TextField(editable=False)
-	pub_date=models.DateTimeField(editable=False)
-	updated_date=models.DateTimeField(editable=False)
+	pub_date=models.DateField(editable=False)
+	updated_date=models.DateField(editable=False)
 #	tags=TagField()
 
 	class Meta:
@@ -56,8 +56,8 @@ class Algo_snippet(models.Model):
 
 	def save(self):
 		if not self.id:
-			self.pub_date = datetime.datetime.now()
-		self.updated_date = datetime.datetime.now()
+			self.pub_date = date.today()
+		self.updated_date = date.today()
 		self.description_html = markdown(self.description)
 		self.highlighted_code = self.highlight()
 		super(Algo_snippet, self).save()
@@ -77,8 +77,8 @@ class Coding_snippet(models.Model):
 	description_html=models.TextField(editable=False)
 	code=models.TextField()
 	highlighted_code=models.TextField(editable=False)
-	pub_date=models.DateTimeField(editable=False)
-	updated_date=models.DateTimeField(editable=False)
+	pub_date=models.DateField(editable=False)
+	updated_date=models.DateField(editable=False)
 #	tags=TagField()
 
 	class Meta:
@@ -95,12 +95,15 @@ class Coding_snippet(models.Model):
 
 	def save(self):
 		if not self.id:
-			self.pub_date = datetime.datetime.now()
-		self.updated_date = datetime.datetime.now()
+			self.pub_date = date.today()
+		self.updated_date = date.today()
 		self.description_html = markdown(self.description)
 		self.highlighted_code = self.highlight()
 		super(Coding_snippet, self).save()
 
+	@models.permalink
+	def get_absolute_url(self):
+		return ('coding_snippet_detail',(),{ 'coding_snippet_id' : self.id })
 
 
 

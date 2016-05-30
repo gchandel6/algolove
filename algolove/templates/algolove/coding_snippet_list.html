@@ -20,15 +20,39 @@
 			<p id="p2">	 love	</p>
 			</a>
 			
-			<a	href="">
+			<a	href="{%	if request.user.is_authenticated	%}	
+					  {%	url 'home_page'		%}
+					  {% 	else				%}
+					  {%	url 'log_in'		%}
+					  {%	endif		%}
+					 
+						">
 			<div id="mm1">
-				<p id="p3">LOGIN</p>	
+				<p id="p3">
+						{%	if request.user.is_authenticated 	%}
+						{{	user.username 	}}
+						{%	else	%}
+							LOGIN
+						{%	endif	%}
+						</p>	
 			</div>
 			</a>
 			
-			<a	href="">
+			<a	href="{%	if request.user.is_authenticated	%}	
+					  {%	url 'log_out'		%}
+					  {% 	else				%}
+					  {%	url 'sign_up'		%}
+					  {%	endif		%}
+					 
+						">
 			<div id="mm2">	
-				<p id="p4">SIGNUP</p>
+				<p id="p4">
+							{%	if request.user.is_authenticated 	%}
+								LOGOUT
+							{%	else	%}
+								SIGNUP
+							{%	endif	%}
+						</p>
 			</div>
 			</a>
 			

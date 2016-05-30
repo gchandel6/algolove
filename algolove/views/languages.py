@@ -11,6 +11,7 @@ def language_detail(request , slug):
 	
 	language = get_object_or_404( Language , slug=slug)
 	snippets = Algo_snippet.objects.filter(language=language)
-	return render(request,'algolove/language_detail.html',{'codes':snippets })
+	return render(request,'algolove/language_detail.html'
+					,{'codes':snippets , 'language':language })
 
 	

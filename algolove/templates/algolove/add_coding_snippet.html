@@ -76,13 +76,17 @@
 		<div class="login-page">
 	    	<div class="form">
     			
-    			<form class="login-form" method="POST" action="{%	url 'add_algo_snippet'	%}">
+    			<form class="login-form" method="POST" action="{%	url 'add_coding_snippet'	%}">
 
     				{% csrf_token %}
-    				<p class="sp">  Title :	</p>
-      				<p>	{{form.title }}		  </p>
+    				<p class="sp">  Problem Name :	</p>
+      				<p>	{{form.prob_name }}		  </p>
+      				<p class="sp">  Judge Name :	</p>
+      				<p>	{{form.judge_name }} </p>
+      				<p class="sp">  Techniques used :	</p>
+      				<p>	{{form.tech 	 	}}</p>
       				<p class="sp">  Description :	</p>
-      				<p>	{{form.description }} </p>
+      				<p>	{{form.description 	 }}</p>
       				<p class="sp">  Code :	</p>
       				<p>	{{form.code 	 	}}</p>
       				<p class="sp">  Language :	</p>

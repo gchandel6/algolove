@@ -8,6 +8,7 @@
 		<link rel="stylesheet" type="text/css" href="{%  static  'css/c1.css'  %}">
 		<link rel="stylesheet" type="text/css" href="{%  static  'css/w3css.css'  %}">
 		<script src="{%  static  'javascript/jquery.js'  %}">	</script>
+		<script src="{%  static  'javascript/j1.js'  %}">	</script>
 	
 	</head>
 	
@@ -21,7 +22,7 @@
 			</a>
 			
 			<a	href="{%	if request.user.is_authenticated	%}	
-					  {%	url 'home_page'		%}
+					  {%	url 'profile_page' username=request.user.username	%}
 					  {% 	else				%}
 					  {%	url 'log_in'		%}
 					  {%	endif		%}
@@ -145,7 +146,7 @@
 					</div>
 				</a>
 				
-				<a href="">
+				<a href="{%	 url 'add_coding_snippet'	%}">
 					<div class="m522"  id="sp3">
 						<div class="mh1">
 							<p class="p7">

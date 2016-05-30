@@ -23,5 +23,9 @@ urlpatterns = [
 
 	#	URL for user Logout
 
-	url(r'^logout/$',home.log_out,name="log_out")
+	url(r'^logout/$',home.log_out,name="log_out"),
+
+	#	URL for user profile page
+
+	url(r'^users/(?P<username>\w+)/$', home.profile_page , name="profile_page")
 ]

@@ -1,13 +1,90 @@
-<<!DOCTYPE html>
+{%   load staticfiles   %}
+
 <html>
-<head>
-	<title></title>
-</head>
-<body>
 
-	{%	for i in codes	%}
-	<p>		{{	i.title	}}	</p>
-	{%	endfor	%}
+	<head>
+	
+		<title>	All Snippets in : {{	language.name	}}	</title>
+		<link rel="stylesheet" type="text/css" href="{%  static  'css/c2.css'  %}">
+		<link rel="stylesheet" type="text/css" href="{%  static  'css/w3css.css'  %}">
+		<script src="{%  static  'javascript/jquery.js'  %}">	</script>
+	
+	</head>
 
-</body>
-</html>
+	<body>
+
+		<div id="m1">
+			
+			<a href="{% url 'home_page' %}">
+			<p id="p1">  algo	</p>
+			<p id="p2">	 love	</p>
+			</a>
+			
+			<a	href="{%	if request.user.is_authenticated	%}	
+					  {%	url 'home_page'		%}
+					  {% 	else				%}
+					  {%	url 'log_in'		%}
+					  {%	endif		%}
+					 
+						">
+			<div id="mm1">
+				<p id="p3">
+						{%	if request.user.is_authenticated 	%}
+						{{	user.username 	}}
+						{%	else	%}
+							LOGIN
+						{%	endif	%}
+						</p>	
+			</div>
+			</a>
+			
+			<a	href="{%	if request.user.is_authenticated	%}	
+					  {%	url 'log_out'		%}
+					  {% 	else				%}
+					  {%	url 'sign_up'		%}
+					  {%	endif		%}
+					 
+						">
+			<div id="mm2">	
+				<p id="p4">
+							{%	if request.user.is_authenticated 	%}
+								LOGOUT
+							{%	else	%}
+								SIGNUP
+							{%	endif	%}
+						</p>
+			</div>
+			</a>
+			
+		</div>
+
+		<div id="m2">
+			<h id="hd1">	{{	language.name	}}	</h>
+		</div>
+
+
+		
+        
+        {% for snippet in codes %}
+            <a href="{%	 url 'algo_snippet_detail' algo_snippet_id=snippet.id	 %}">
+            	
+            	<div id="s1">
+            		<p id="p5">{{	snippet.title 	}}</p>
+            		<p id="p6">By : {{	snippet.author  }}</p>
+            		<p id="p7">	    {{	snippet.pub_date  }}</p>
+            	</div>
+
+            </a>
+        {% endfor %}
+
+
+    	<div id="m3">
+
+    	</div>
+
+
+
+	</body>
+
+
+	</html>	

@@ -27,4 +27,8 @@ urlpatterns = [
 							name="coding_snippet_detail"
 		),	
 	
+	# URL for adding a new algo_snippet
+
+	url(r'^add/$',Coding_snippets.add_coding_snippet,name="add_coding_snippet")
+	
 ]

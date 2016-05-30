@@ -1,6 +1,7 @@
 from django.shortcuts import render , redirect
 from django.contrib.auth import authenticate,login,logout
 from algolove.forms import SignupForm , LoginForm
+from django.contrib.auth.models import User
 
 
 # Create your views here.
@@ -39,7 +40,7 @@ def log_in(request):
 			if user is not None:
 				if user.is_active:
 					login(request,user)
-					return render(request,'algolove/home_page.html',{ 'user' : user })
+					return redirect('home_page')
 	else:
 		form=LoginForm()
 
@@ -51,3 +52,10 @@ def log_in(request):
 def log_out(request):
 	logout(request)
 	return redirect('home_page')
+
+
+#	View for User profile page
+
+def profile_page(request,username):
+	user=User.objects.get(username=username)
+	return render(request,'algolove/user.html',{'user':user } )
