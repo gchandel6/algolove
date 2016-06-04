@@ -52,6 +52,8 @@
 	border:1px solid #008080;	
 	-webkit-transition: all 0.7s ease-in;
 	transition: all 0.7s ease-in;
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+
 }
 
 #mm2
@@ -67,6 +69,7 @@
 	border:1px solid #008080;
 	-webkit-transition: all 0.7s ease-in;
 	transition: all 0.7s ease-in;
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
 #mm1:hover
@@ -222,6 +225,7 @@ a
 .p7
 {
 	font-size:17px;
+	font-family:cursive;
 	margin-top:47px;
 	text-align:center;
 }
@@ -230,6 +234,7 @@ a
 {
 	font-size:14px;
 	color:#254117;
+	font-family:cursive;
 	text-align:center;
 }
 
@@ -258,4 +263,76 @@ a
 #sp3:hover
 {
 	color:#7D0541;
+}
+
+#r1
+{
+	height:80%;
+}
+
+#r12
+{
+	float:left;
+	margin-left:9%;
+	height:100%;
+	border:2px solid #666362;
+	border-radius:20px;
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+#r13
+{
+	float:left;
+	margin-left:2%;
+	border:2px solid #666362;
+	height:100%;
+	border-radius:20px;
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.pi1
+{
+	font-family:cursive;
+	font-size:18px;
+	color:#666362;
+	text-align:center;
+	margin-top:8%;
+}
+
+#vip1
+{
+	background-color:#666362;
+	height:13%;
+	color:white;
+	width:80%;
+	margin-right:auto;
+	margin-left:auto;
+	margin-top:4%;
+	border-radius:4px;
+	-webkit-transition: all 0.5s ease-in;
+	transition: all 0.5s ease-in;
+}
+
+#vip1:hover
+{
+	background-color: white;
+	border:1px solid #666362;
+	color:#666362;
+}
+
+#pi2
+{
+	float:left;
+	font-family: cursive;
+	margin-left:5%;
+	margin-top:4%;
+}
+
+#pi3
+{
+	float:right;
+	font-family: cursive;
+	margin-top:4%;
+	font-size:15px;
+	margin-right:3%;
 }

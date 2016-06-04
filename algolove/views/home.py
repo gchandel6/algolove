@@ -2,6 +2,8 @@ from django.shortcuts import render , redirect
 from django.contrib.auth import authenticate,login,logout
 from algolove.forms import SignupForm , LoginForm
 from django.contrib.auth.models import User
+from algolove.models import Algo_snippet,Coding_snippet
+from django.utils import timezone
 
 
 # Create your views here.
@@ -9,8 +11,8 @@ from django.contrib.auth.models import User
 #	View for Home Page
 
 def home_page(request):
-	
-	return render(request , 'algolove/home_page.html')
+	arr = Algo_snippet.objects.filter(pub_date__lte=timezone.now()).order_by('pub_date')
+	return render(request , 'algolove/home_page.html' ,{'arr':arr } )
 
 
 #	View for User Signup

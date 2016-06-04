@@ -6,7 +6,6 @@
 	
 		<title>	AlgoLove : Love for Algorithms	</title>
 		<link rel="stylesheet" type="text/css" href="{%  static  'css/c1.css'  %}">
-		<link rel="stylesheet" type="text/css" href="{%  static  'css/w3css.css'  %}">
 		<script src="{%  static  'javascript/jquery.js'  %}">	</script>
 		<script src="{%  static  'javascript/j1.js'  %}">	</script>
 	
@@ -72,6 +71,31 @@
 			</a>
 		
 		</div>
+
+		
+		<div style="height:18%">	</div>
+
+		<div id="r1">			
+			<div id="r12" style="width:40%">
+				<p class="pi1">	RECENT ACTIVITY	</p>
+
+				{%	for a in arr	%}
+					<a href="{%	url 'algo_snippet_detail' algo_snippet_id=a.id %}	">
+						<div id="vip1">
+							<p id="pi2">	{{	a.title 	}}	</p>
+							<p id="pi3">	{{	a.author 	}}	</p>
+						</div>
+					</a>
+				{%	endfor	%}
+			</div>
+			
+			<div id="r13" style="width:40%">	
+				<p class="pi1">	TOP AUTHORS	</p>
+			</div>
+		</div>
+
+		<div style="height:4%">	</div>
+
 
 		<div class="m5">
 
