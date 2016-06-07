@@ -272,8 +272,8 @@ a
 
 #r12
 {
-	float:left;
-	margin-left:9%;
+	margin-left:auto;
+	margin-right:auto;
 	height:100%;
 	border:2px solid #666362;
 	border-radius:20px;

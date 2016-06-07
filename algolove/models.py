@@ -2,7 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from pygments import lexers, formatters, highlight
-from tagging.fields import TagField
+#from tagging.fields import TagField
 from markdown import markdown
 from datetime import datetime,date
 
